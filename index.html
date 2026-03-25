@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arun Venkatesh – Actor Portfolio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Josefin+Sans:wght@100;300;400;600&family=Noto+Serif+Tamil:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9952A;
+      --deep-gold: #8B6310;
+      --crimson: #8B1A1A;
+      --cream: #F5EDD6;
+      --dark: #0A0705;
+      --mid: #1C1208;
+      --text-light: #E8D8B0;
+      --accent: #D4A843
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--cream);
+      font-family: 'Josefin Sans', sans-serif;
+      overflow-x: hidden
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: .035;
+      pointer-events: none
+    }
+
+    .page {
+      display: none;
+      min-height: 100vh
+    }
+
+    .page.active {
+      display: block;
+      animation: pageIn .6s cubic-bezier(.22, 1, .36, 1) both
+    }
+
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: linear-gradient(to bottom, rgba(10, 7, 5, .95) 0%, transparent 100%);
+      backdrop-filter: blur(2px)
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: .08em;
+      cursor: pointer
+    }
+
+    .nav-logo span {
+      font-style: italic;
+      color: var(--cream)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none
+    }
+
+    .nav-links a {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color .3s;
+      position: relative;
+      cursor: pointer
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width .3s
+    }
+
+    .nav-links a:hover {
+      color: var(--gold)
+    }
+
+    .nav-links a:hover::after {
+      width: 100%
+    }
+
+    /* HERO */
+    #hero {
+      position: relative;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      overflow: hidden
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201, 149, 42, .12) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 30% 30%, rgba(139, 26, 26, .18) 0%, transparent 60%), linear-gradient(135deg, #0A0705 0%, #1a0e06 50%, #0d0a04 100%)
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 38%;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(201, 149, 42, .25), transparent)
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: calc(38% + 18px);
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(201, 149, 42, .12), transparent)
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      padding: 0 4rem 0 5rem;
+      animation: fadeInLeft 1.2s ease both
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    .hero-tamil {
+      font-family: 'Noto Serif Tamil', serif;
+      font-size: .9rem;
+      letter-spacing: .15em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      opacity: .8
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: .95;
+      color: var(--cream);
+      text-shadow: 0 4px 40px rgba(201, 149, 42, .2)
+    }
+
+    .hero-name em {
+      display: block;
+      font-style: italic;
+      color: var(--gold)
+    }
+
+    .hero-tagline {
+      margin-top: 1.5rem;
+      font-size: .75rem;
+      font-weight: 300;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: rgba(232, 216, 176, .55)
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 1.8rem 0
+    }
+
+    .hero-desc {
+      font-size: .95rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-light);
+      max-width: 420px;
+      opacity: .85
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: center
+    }
+
+    .btn-primary {
+      padding: .85rem 2.2rem;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all .3s;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 149, 42, .4)
+    }
+
+    .btn-ghost {
+      padding: .85rem 2rem;
+      background: transparent;
+      color: var(--gold);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(201, 149, 42, .4);
+      cursor: pointer;
+      transition: all .3s
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      background: rgba(201, 149, 42, .08)
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      animation: fadeInRight 1.2s ease .2s both
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    .hero-image-frame {
+      position: relative;
+      width: 480px;
+      height: 640px
+    }
+
+    .hero-image-frame::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: 15px;
+      bottom: 15px;
+      border: 1px solid rgba(201, 149, 42, .3);
+      z-index: 0
+    }
+
+    .hero-image-frame::after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: -15px;
+      bottom: -15px;
+      border: 1px solid rgba(201, 149, 42, .12);
+      z-index: 0
+    }
+
+    .hero-portrait {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(160deg, #2a1a0a 0%, #1a0e06 40%, #0f0905 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden
+    }
+
+    .portrait-placeholder {
+      width: 100%;
+      height: 100%;
+      /* background: radial-gradient(ellipse 55% 30% at 50% 28%, rgba(201, 149, 42, .15) 0%, transparent 60%), linear-gradient(180deg, #1e1208 0%, #120c05 100%); */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portrait-svg {
+      position: absolute;
+      width: 100%;
+      height: 100%
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 1rem;
+      left: 5rem;
+      display: flex;
+      gap: 3rem;
+      z-index: 3;
+      animation: fadeUp 1.2s ease .5s both
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .stat-item {
+      text-align: center
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block
+    }
+
+    .stat-label {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(232, 216, 176, .45)
+    }
+
+    section {
+      position: relative;
+      z-index: 1
+    }
+
+    .section-header {
+      text-align: center;
+      padding: 5rem 0 3rem
+    }
+
+    .section-eyebrow {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--cream)
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold)
+    }
+
+    /* FILMS */
+    #films {
+      padding: 0 0 6rem;
+      background: linear-gradient(to bottom, var(--dark), #0e0a05, var(--dark))
+    }
+
+    .films-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      background: rgba(201, 149, 42, .15)
+    }
+
+    .film-card {
+      position: relative;
+      aspect-ratio: 2/3;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--mid)
+    }
+
+    .film-card-bg {
+      width: 100%;
+      height: 100%;
+      transition: transform .6s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .film-card-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block
+    }
+
+    .film-card:hover .film-card-bg {
+      transform: scale(1.05)
+    }
+
+    .film-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 7, 5, .95) 0%, rgba(10, 7, 5, .2) 60%, transparent 100%);
+      transition: opacity .4s
+    }
+
+    .film-card:hover .film-card-overlay {
+      opacity: .7
+    }
+
+    .film-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 1.5rem 1.5rem
+    }
+
+    .film-year {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      color: var(--gold);
+      margin-bottom: .4rem
+    }
+
+    .film-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2
+    }
+
+    .film-role {
+      font-size: .7rem;
+      font-weight: 300;
+      letter-spacing: .12em;
+      color: rgba(232, 216, 176, .55);
+      margin-top: .3rem
+    }
+
+    .film-award {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: .8rem;
+      padding: .3rem .7rem;
+      background: rgba(201, 149, 42, .2);
+      border: 1px solid rgba(201, 149, 42, .35);
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold)
+    }
+
+    .film-bg-1 {
+      background: linear-gradient(135deg, #1a0a0a, #2d1507, #0f1520)
+    }
+
+    .film-bg-2 {
+      background: linear-gradient(135deg, #0a1a14, #1a2d10, #200f15)
+    }
+
+    .film-bg-3 {
+      background: linear-gradient(135deg, #1a1a0a, #2d2007, #15200f)
+    }
+
+    .film-bg-4 {
+      background: linear-gradient(135deg, #0f0a1a, #1a0d2d, #0a1520)
+    }
+
+    .film-bg-5 {
+      background: linear-gradient(135deg, #1a0f0a, #2d1a07, #200a15)
+    }
+
+    .film-bg-6 {
+      background: linear-gradient(135deg, #0a150a, #152d10, #0a1a1a)
+    }
+
+    .film-icon {
+      font-size: 4rem;
+      opacity: .15;
+      color: var(--gold)
+    }
+
+    .film-click-hint {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 149, 42, .4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      color: var(--gold);
+      opacity: 0;
+      transition: opacity .3s;
+      background: rgba(10, 7, 5, .6)
+    }
+
+    .film-card:hover .film-click-hint {
+      opacity: 1
+    }
+
+    /* AWARDS */
+    #awards {
+      padding: 0 0 6rem;
+      background: linear-gradient(to bottom, #0e0a05, #0A0705)
+    }
+
+    .awards-marquee-wrap {
+      overflow: hidden;
+      margin: 2rem 0;
+      border-top: 1px solid rgba(201, 149, 42, .15);
+      border-bottom: 1px solid rgba(201, 149, 42, .15);
+      padding: 1.2rem 0
+    }
+
+    .awards-marquee {
+      display: flex;
+      gap: 4rem;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: .8rem;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: rgba(201, 149, 42, .5);
+      flex-shrink: 0
+    }
+
+    .marquee-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: .4
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 3rem auto 0;
+      padding: 0 3rem
+    }
+
+    .award-card {
+      padding: 2rem 2.5rem;
+      border: 1px solid rgba(201, 149, 42, .15);
+      background: rgba(201, 149, 42, .03);
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s, background .3s
+    }
+
+    .award-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .award-card:hover {
+      border-color: rgba(201, 149, 42, .35);
+      background: rgba(201, 149, 42, .06)
+    }
+
+    .award-card:hover::before {
+      opacity: 1
+    }
+
+    .award-year {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      color: var(--gold);
+      opacity: .7;
+      margin-bottom: .5rem
+    }
+
+    .award-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: .4rem
+    }
+
+    .award-film {
+      font-size: .75rem;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: var(--text-light);
+      opacity: .6
+    }
+
+    .award-icon {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 1.8rem;
+      opacity: .15
+    }
+
+    /* ABOUT */
+    #about {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, #0d0805, #130f08, #0A0705)
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      padding: 0 5rem
+    }
+
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--cream);
+      position: relative;
+      padding-left: 2rem
+    }
+
+    .about-quote::before {
+      content: '"';
+      position: absolute;
+      top: -1.5rem;
+      left: -.5rem;
+      font-size: 8rem;
+      line-height: 1;
+      color: var(--gold);
+      opacity: .12;
+      font-family: 'Playfair Display', serif
+    }
+
+    .about-quote cite {
+      display: block;
+      margin-top: 1.5rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-style: normal;
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .7
+    }
+
+    .about-body p {
+      font-size: .92rem;
+      font-weight: 300;
+      line-height: 1.95;
+      color: var(--text-light);
+      opacity: .8;
+      margin-bottom: 1.2rem
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 1.5rem
+    }
+
+    .skill-tag {
+      padding: .4rem 1rem;
+      border: 1px solid rgba(201, 149, 42, .25);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .75;
+      background: rgba(201, 149, 42, .05)
+    }
+
+    /* CONTACT */
+    #contact {
+      padding: 6rem 0;
+      text-align: center;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201, 149, 42, .06) 0%, transparent 70%), linear-gradient(180deg, var(--dark), #100a04)
+    }
+
+    .contact-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 3rem
+    }
+
+    .contact-desc {
+      font-size: .95rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-light);
+      opacity: .75;
+      margin: 1.5rem 0 3rem
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 3rem
+    }
+
+    .contact-card {
+      padding: 1.8rem 1rem;
+      border: 1px solid rgba(201, 149, 42, .15);
+      background: rgba(201, 149, 42, .03);
+      transition: all .3s
+    }
+
+    .contact-card:hover {
+      border-color: rgba(201, 149, 42, .4);
+      background: rgba(201, 149, 42, .07);
+      transform: translateY(-4px)
+    }
+
+    .contact-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: .8rem;
+      opacity: .6
+    }
+
+    .contact-card-label {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .7;
+      margin-bottom: .4rem
+    }
+
+    .contact-card-value {
+      font-size: .8rem;
+      font-weight: 300;
+      color: var(--cream);
+      opacity: .8
+    }
+
+    footer {
+      padding: 2rem 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(201, 149, 42, .1);
+      background: var(--dark)
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: .6
+    }
+
+    .footer-copy {
+      font-size: .65rem;
+      font-weight: 300;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(232, 216, 176, .3)
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1.5rem
+    }
+
+    .footer-socials a {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(201, 149, 42, .45);
+      text-decoration: none;
+      transition: color .3s
+    }
+
+    .footer-socials a:hover {
+      color: var(--gold)
+    }
+
+    /* FILM DETAIL */
+    #film-detail {
+      min-height: 100vh;
+      background: var(--dark)
+    }
+
+    .detail-hero {
+      position: relative;
+      height: 72vh;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end
+    }
+
+    .detail-hero-bg {
+      position: absolute;
+      inset: 0
+    }
+
+    .detail-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 7, 5, 1) 0%, rgba(10, 7, 5, .5) 40%, rgba(10, 7, 5, .1) 100%)
+    }
+
+    .detail-hero-bg-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative
+    }
+
+    .detail-back-btn {
+      position: absolute;
+      top: 6rem;
+      left: 4rem;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      cursor: pointer;
+      background: rgba(10, 7, 5, .6);
+      padding: .7rem 1.2rem;
+      border: 1px solid rgba(201, 149, 42, .25);
+      transition: all .3s
+    }
+
+    .detail-back-btn:hover {
+      background: rgba(201, 149, 42, .12);
+      border-color: rgba(201, 149, 42, .5)
+    }
+
+    .detail-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5rem 4rem;
+      width: 100%
+    }
+
+    .detail-lang-badge {
+      display: inline-block;
+      padding: .3rem .9rem;
+      background: rgba(201, 149, 42, .2);
+      border: 1px solid rgba(201, 149, 42, .4);
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem
+    }
+
+    .detail-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900;
+      line-height: .9;
+      color: var(--cream);
+      text-shadow: 0 4px 60px rgba(10, 7, 5, .8)
+    }
+
+    .detail-title em {
+      font-style: italic;
+      color: var(--gold)
+    }
+
+    .detail-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap
+    }
+
+    .detail-meta-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .72rem;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: rgba(232, 216, 176, .65)
+    }
+
+    .detail-meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: .5
+    }
+
+    .detail-trailer-strip {
+      position: relative;
+      margin: 0 auto 4rem;
+      overflow: hidden;
+    }
+
+    .trailer-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 5rem;
+    }
+
+    .video-container {
+      width: 100%;
+      height: 500px;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid var(--gold);
+      margin-top: 1rem;
+    }
+
+    .detail-trailer-strip {
+      position: relative;
+      margin: 0 auto 4rem;
+      overflow: hidden;
+    }
+
+    .detail-trailer-strip:hover {
+      background: rgba(201, 149, 42, .08);
+      border-color: rgba(201, 149, 42, .4)
+    }
+
+    .detail-trailer-strip::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gold)
+    }
+
+    .trailer-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: .3rem
+    }
+
+    .trailer-text p {
+      font-size: .72rem;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: rgba(232, 216, 176, .5)
+    }
+
+    .trailer-play {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: all .3s;
+      background: rgba(201, 149, 42, .1)
+    }
+
+    .detail-trailer-strip:hover .trailer-play {
+      background: rgba(201, 149, 42, .2);
+      transform: scale(1.1)
+    }
+
+    .detail-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 5rem 6rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4rem
+    }
+
+    .detail-synopsis-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .7;
+      margin-bottom: 1rem
+    }
+
+    .detail-synopsis {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.85;
+      color: var(--cream);
+      opacity: .9;
+      margin-bottom: 2rem
+    }
+
+    .detail-synopsis-body {
+      font-size: .9rem;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--text-light);
+      opacity: .75;
+      margin-bottom: 2rem
+    }
+
+    .detail-cast-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .7;
+      margin-bottom: 1.2rem;
+      border-top: 1px solid rgba(201, 149, 42, .15);
+      padding-top: 1.5rem;
+      margin-top: 1.5rem
+    }
+
+    .detail-cast-list {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem
+    }
+
+    .detail-cast-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .7rem 0;
+      border-bottom: 1px solid rgba(201, 149, 42, .07)
+    }
+
+    .cast-name {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--cream)
+    }
+
+    .cast-role {
+      font-size: .68rem;
+      font-weight: 300;
+      letter-spacing: .1em;
+      color: rgba(232, 216, 176, .45)
+    }
+
+    .detail-sidebar {}
+
+    .sidebar-poster {
+      width: 100%;
+      aspect-ratio: 2/3;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem
+    }
+
+    .sidebar-poster-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative
+    }
+
+    .sidebar-poster-inner::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: 8px;
+      bottom: 8px;
+      border: 1px solid rgba(201, 149, 42, .3);
+      z-index: 2
+    }
+
+    .sidebar-poster-inner::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: -8px;
+      bottom: -8px;
+      border: 1px solid rgba(201, 149, 42, .1);
+      z-index: 2
+    }
+
+    .sidebar-info-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(201, 149, 42, .1);
+      display: flex;
+      flex-direction: column;
+      gap: .3rem
+    }
+
+    .sidebar-info-label {
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .6
+    }
+
+    .sidebar-info-value {
+      font-size: .85rem;
+      font-weight: 300;
+      color: var(--cream);
+      opacity: .8
+    }
+
+    .detail-awards-section {
+      margin-top: 2rem
+    }
+
+    .detail-award-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .5rem 1rem;
+      margin: .3rem .3rem .3rem 0;
+      background: rgba(201, 149, 42, .1);
+      border: 1px solid rgba(201, 149, 42, .3);
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold)
+    }
+
+    /* SINGLE AWARD CARD */
+    .award-single-wrap {
+      max-width: 420px;
+      margin: 3rem auto 0;
+      padding: 0 3rem;
+    }
+
+    .award-card-new {
+      background: rgba(201, 149, 42, 0.04);
+      border: 1px solid rgba(201, 149, 42, 0.2);
+      overflow: hidden;
+      transition: all 0.35s ease;
+      position: relative;
+    }
+
+    .award-card-new::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .award-card-new:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201, 149, 42, 0.5);
+      background: rgba(201, 149, 42, 0.08);
+      box-shadow: 0 12px 40px rgba(201, 149, 42, 0.18);
+    }
+
+    .award-card-new:hover::before {
+      opacity: 1;
+    }
+
+    .award-card-new img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.4s;
+    }
+
+    .award-card-new:hover img {
+      filter: grayscale(0%);
+    }
+
+    .award-content {
+      padding: 1.8rem 2rem;
+    }
+
+    .award-year-label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.75;
+      margin-bottom: 0.5rem;
+    }
+
+    .award-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin: 0 0 0.4rem;
+      line-height: 1.3;
+    }
+
+    .award-film-name {
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      opacity: 0.6;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(201, 149, 42, .4)
+    }
+
+/* ══════════════════════════════════════════
+       HAMBURGER BUTTON & MOBILE NAV
+    ══════════════════════════════════════════ */
+    .hamburger {
+      display: none; /* Hidden on desktop */
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: rgba(10, 7, 5, 0.8);
+      border: 1px solid rgba(201,149,42,.35);
+      padding: .6rem;
+      cursor: pointer;
+      z-index: 1001; /* Higher than mobile nav */
+      position: relative;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold);
+      transition: all .3s;
+    }
+
+    /* Animation for X morph */
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile {
+      position: fixed;
+      top: 0;
+      right: -100%; /* Hidden off-screen */
+      width: 100%;
+      height: 100vh;
+      background: var(--dark);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .nav-mobile.open {
+      right: 0; /* Slide in */
+    }
+
+    .nav-mobile a {
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* Show hamburger on mobile */
+    @media (max-width: 768px) {
+      .nav-links { display: none !important; }
+      .hamburger { display: flex; }
+    }
+    
+    /* ══════════════════════════════════════════
+       CRT EFFECT
+    ══════════════════════════════════════════ */
+    .crt-overlay {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    /* Scanlines */
+    .crt-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0, 0, 0, 0.18) 3px,
+        rgba(0, 0, 0, 0.18) 4px
+      );
+      animation: crtFlicker 0.15s infinite;
+    }
+
+    /* Vignette + phosphor glow */
+    .crt-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 100% 90% at 50% 50%,
+          transparent 55%,
+          rgba(0,0,0,0.55) 100%),
+        radial-gradient(ellipse 70% 50% at 50% 50%,
+          rgba(201,149,42,0.03) 0%,
+          transparent 70%);
+    }
+
+    @keyframes crtFlicker {
+      0%   { opacity: 1; }
+      48%  { opacity: 1; }
+      50%  { opacity: 0.92; }
+      52%  { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    /* Scrolling scanline beam */
+    .crt-beam {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(201,149,42,0.04) 40%,
+        rgba(201,149,42,0.07) 50%,
+        rgba(201,149,42,0.04) 60%,
+        transparent 100%);
+      animation: crtBeam 6s linear infinite;
+    }
+
+    @keyframes crtBeam {
+      from { top: -120px; }
+      to   { top: 110%; }
+    }
+
+    /* ══════════════════════════════════════════
+       HAMBURGER BUTTON
+    ══════════════════════════════════════════ */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: 1px solid rgba(201,149,42,.35);
+      padding: .5rem .7rem;
+      cursor: pointer;
+      z-index: 200;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold);
+      transition: all .3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ══════════════════════════════════════════
+       MEDIA QUERIES
+    ══════════════════════════════════════════ */
+ /* ══════════════════════════════════════════════════
+       MEDIA QUERIES
+    ══════════════════════════════════════════════════ */
+
+    @media (min-width: 1200px) {
+      .hero-image-frame { width: 520px; height: 680px }
+    }
+
+    @media (max-width: 1199px) {
+      nav { padding: 1.2rem 2.5rem }
+      .hero-text { padding: 0 2.5rem 0 3rem }
+      .hero-image-frame { width: 380px; height: 520px }
+      .hero-stats { left: 3rem; gap: 2rem }
+      .films-grid { padding: 0 2rem }
+      .about-inner { padding: 0 3rem; gap: 3rem }
+      .detail-body { padding: 4rem 3rem 6rem }
+      .detail-hero-content { padding: 0 3rem 4rem }
+      .detail-trailer-strip { margin: 0 3rem 4rem }
+      .detail-back-btn { left: 3rem }
+      footer { padding: 2rem 3rem }
+    }
+
+    @media (max-width: 1024px) {
+      nav { padding: 1.2rem 2rem }
+      .nav-links { gap: 1.8rem }
+      .nav-links a { font-size: .65rem; letter-spacing: .16em }
+      #hero { height: auto; min-height: 100vh; grid-template-columns: 1fr 1fr; padding-top: 80px }
+      .hero-text { padding: 3rem 2rem 3rem 2.5rem }
+      .hero-name { font-size: clamp(2.8rem,5vw,4rem) }
+      .hero-image-frame { width: 320px; height: 440px }
+      .hero-image-wrap { padding-bottom: 2rem }
+      .hero-stats { position: relative; left: auto; bottom: auto; padding: 2rem 2.5rem; grid-column: 1/-1; justify-content: center; gap: 2rem }
+      #hero { grid-template-rows: auto auto }
+      .films-grid { grid-template-columns: repeat(2,1fr); padding: 0 2rem }
+      .awards-grid { padding: 0 2rem }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; padding: 0 2.5rem; text-align: center }
+      .about-quote { padding-left: 0; text-align: center }
+      .about-quote::before { left: 50%; transform: translateX(-50%) }
+      .skills-row { justify-content: center }
+      .contact-inner { padding: 0 2rem }
+      footer { padding: 2rem 2.5rem; justify-content: center; text-align: center }
+      .detail-body { grid-template-columns: 1fr; padding: 3rem 2.5rem 5rem }
+      .detail-sidebar { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; align-items: start }
+      .sidebar-poster { margin-bottom: 0 }
+      .detail-hero-content { padding: 0 2.5rem 3rem }
+      .detail-trailer-strip { margin: 0 auto 3rem }
+      .trailer-wrapper { padding: 2rem 2.5rem }
+      .video-container { height: 420px }
+      .detail-back-btn { left: 2.5rem }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.1rem 1.5rem }
+      .nav-links { display: none }
+      .hamburger { display: flex }
+
+      #hero { grid-template-columns: 1fr; grid-template-rows: auto auto auto; height: auto; min-height: 100vh; padding-top: 70px }
+      .hero-bg::before, .hero-bg::after { display: none }
+      .hero-text { padding: 3rem 1.5rem 2rem; text-align: center; order: 1 }
+      .hero-name { font-size: clamp(3rem,10vw,4.5rem) }
+      .hero-tagline { letter-spacing: .2em }
+      .hero-desc { max-width: 100%; margin: 0 auto }
+      .hero-cta { justify-content: center }
+      .hero-image-wrap { order: 0; height: auto; padding: 2rem 1.5rem 0; justify-content: center }
+      .hero-image-frame { width: 240px; height: 320px }
+      .hero-image-frame::before, .hero-image-frame::after { display: none }
+      .hero-stats { order: 2; position: relative; left: auto; bottom: auto; padding: 2rem 1.5rem; gap: 1.5rem; justify-content: center; flex-wrap: wrap }
+      .stat-num { font-size: 1.6rem }
+      .section-header { padding: 3.5rem 1.5rem 2rem }
+      .films-grid { grid-template-columns: repeat(2,1fr); padding: 0 1.5rem; gap: 1px }
+      .awards-grid { grid-template-columns: 1fr; padding: 0 1.5rem; gap: 1rem }
+      .award-card { padding: 1.5rem 2rem }
+      .about-inner { padding: 0 1.5rem; gap: 2rem }
+      .about-quote { font-size: clamp(1.3rem,4vw,1.8rem) }
+      .contact-inner { padding: 0 1.5rem }
+      .contact-grid { grid-template-columns: 1fr; gap: .8rem }
+      .contact-desc { font-size: .88rem }
+      footer { padding: 1.8rem 1.5rem; flex-direction: column; text-align: center; gap: .8rem }
+      .footer-socials { justify-content: center }
+      .detail-hero { height: 55vh }
+      .detail-back-btn { top: 5rem; left: 1.5rem; font-size: .62rem; padding: .6rem 1rem }
+      .detail-hero-content { padding: 0 1.5rem 2.5rem }
+      .detail-title { font-size: clamp(2.2rem,7vw,3.5rem) }
+      .detail-meta-row { gap: 1rem }
+      .detail-meta-dot { display: none }
+      .detail-trailer-strip { margin: 0 auto 2.5rem }
+      .trailer-wrapper { padding: 1.5rem 1.5rem }
+      .video-container { height: 300px; border-radius: 10px }
+      .detail-body { grid-template-columns: 1fr; padding: 2.5rem 1.5rem 4rem; gap: 3rem }
+      .detail-sidebar { display: grid; grid-template-columns: 160px 1fr; gap: 1.5rem; align-items: start }
+      .sidebar-poster { margin-bottom: 0 }
+    }
+
+    @media (max-width: 600px) {
+      .hero-image-frame { width: 200px; height: 270px }
+      .hero-name { font-size: clamp(2.6rem,11vw,3.8rem) }
+      .hero-tamil { font-size: .78rem }
+      .hero-desc { font-size: .85rem }
+      .btn-primary, .btn-ghost { font-size: .65rem; padding: .75rem 1.6rem }
+      .films-grid { grid-template-columns: repeat(2,1fr); padding: 0 1rem }
+      .film-title { font-size: 1.1rem }
+      .film-role { font-size: .62rem }
+      .section-title { font-size: clamp(1.7rem,6vw,2.4rem) }
+      .about-inner { padding: 0 1rem }
+      .contact-inner { padding: 0 1rem }
+      .detail-sidebar { grid-template-columns: 1fr }
+      .sidebar-poster { max-width: 220px; margin: 0 auto 1.5rem }
+      .trailer-wrapper { padding: 1.2rem 1rem }
+      .video-container { height: 240px; border-radius: 8px }
+      .detail-trailer-strip::before { width: 100%; height: 4px; top: 0; left: 0 }
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 1rem 1.2rem }
+      .nav-logo { font-size: 1.15rem }
+      #hero { padding-top: 65px }
+      .hero-image-frame { width: 170px; height: 230px }
+      .hero-text { padding: 2rem 1.2rem 1.5rem }
+      .hero-name { font-size: clamp(2.4rem,12vw,3.2rem) }
+      .hero-stats { gap: 1.2rem; padding: 1.5rem 1.2rem }
+      .stat-num { font-size: 1.4rem }
+      .stat-label { font-size: .55rem }
+      .films-grid { grid-template-columns: 1fr 1fr; padding: 0 .8rem }
+      .film-title { font-size: 1rem }
+      .awards-grid { padding: 0 1.2rem }
+      .award-name { font-size: 1rem }
+      .about-inner { padding: 0 1.2rem }
+      .contact-inner { padding: 0 1.2rem }
+      .contact-card { padding: 1.4rem .8rem }
+      footer { padding: 1.5rem 1.2rem }
+      .detail-hero { height: 48vh }
+      .detail-back-btn { top: 4.5rem; left: 1.2rem }
+      .detail-hero-content { padding: 0 1.2rem 2rem }
+      .detail-body { padding: 2rem 1.2rem 3.5rem }
+      .trailer-wrapper { padding: 1rem 1rem }
+      .video-container { height: 200px; border-radius: 8px }
+      .detail-trailer-strip { margin: 0 auto 2rem }
+    }
+
+    @media (max-width: 360px) {
+      .hero-image-frame { width: 140px; height: 190px }
+      .hero-name { font-size: clamp(2rem,13vw,2.8rem) }
+      .films-grid { grid-template-columns: 1fr }
+      .film-card { aspect-ratio: 3/2 }
+      .hero-stats { gap: 1rem }
+      .stat-num { font-size: 1.2rem }
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      .film-card:hover .film-card-bg { transform: none }
+      .film-card:hover .film-card-overlay { opacity: 1 }
+      .film-click-hint { opacity: 1 }
+      .contact-card:hover { transform: none }
+      .award-card:hover { border-color: rgba(201,149,42,.15) }
+    }
+      /* ── HERO SLIDESHOW ── */
+    .hero-slideshow {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .9s ease;
+      pointer-events: none;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Arrows */
+    .slide-arrow {
+      position: absolute;
+      bottom: 1rem;
+      z-index: 10;
+      background: rgba(10, 7, 5, .65);
+      border: 1px solid rgba(201, 149, 42, .45);
+      color: var(--gold);
+      font-size: 1.4rem;
+      line-height: 1;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .3s, border-color .3s;
+      padding: 0;
+    }
+
+    .slide-arrow:hover {
+      background: rgba(201, 149, 42, .2);
+      border-color: var(--gold);
+    }
+
+    .slide-prev {
+      right: 3.2rem;
+    }
+
+    .slide-next {
+      right: 1rem;
+    }
+
+    /* Dots */
+    .slide-dots {
+      position: absolute;
+      bottom: 1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: .45rem;
+      z-index: 10;
+    }
+
+    .slide-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(201, 149, 42, .35);
+      border: 1px solid rgba(201, 149, 42, .5);
+      cursor: pointer;
+      transition: background .3s, transform .3s;
+    }
+
+    .slide-dot.active {
+      background: var(--gold);
+      transform: scale(1.35);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CRT OVERLAY -->
+  <div class="crt-overlay" id="crtOverlay">
+    <div class="crt-beam"></div>
+  </div>
+
+  <nav>
+    <div class="nav-logo" onclick="showHome()">Arun <span>Venkatesh</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a onclick="navTo('films')">Filmography</a></li>
+      <li><a onclick="navTo('awards')">Awards</a></li>
+      <li><a onclick="navTo('about')">About</a></li>
+      <li><a onclick="navTo('contact')">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+  <!-- Mobile Nav Overlay -->
+  <div class="nav-mobile" id="navMobile">
+    <a onclick="navTo('films')">Filmography</a>
+    <a onclick="navTo('awards')">Awards</a>
+    <a onclick="navTo('about')">About</a>
+    <a onclick="navTo('contact')">Contact</a>
+  </div>
+  <!-- HOME PAGE -->
+  <div id="page-home" class="page active">
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-text">
+        <p class="hero-tamil">தென்னிந்திய திரைப்பட நட்சத்திரம்</p>
+        <h1 class="hero-name">Arun<em>Venkatesh</em></h1>
+        <p class="hero-tagline">Actor · South Indian Cinema · Chennai</p>
+        <div class="hero-divider"></div>
+        <p class="hero-desc">A versatile powerhouse of South Indian cinema spanning Tamil films. Known for
+          transformative performances that blur the line between art and experience.</p>
+        <div class="hero-cta">
+          <a href="#films" class="btn-primary">View Filmography</a>
+          <a href="#contact" class="btn-ghost">Book Now</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="hero-image-frame">
+          <div class="hero-portrait">
+            <div class="portrait-placeholder">
+
+              <!-- ═══ SLIDESHOW: add/remove <img> tags below to show more photos ═══ -->
+              <div class="hero-slideshow">
+                <div class="hero-slide active"><img src="Img/Photo.jpeg" alt="Arun Venkatesh"></div>
+                <div class="hero-slide"><img src="Img/photos.jpeg" alt="Arun Venkatesh 2"></div>
+                <div class="hero-slide"><img src="Img/photos 2.jpeg" alt="Arun Venkatesh 3"></div>
+              </div>
+              <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+              <!-- Prev / Next arrows -->
+              <button class="slide-arrow slide-prev" onclick="heroSlide(-1)" aria-label="Previous">&#8249;</button>
+              <button class="slide-arrow slide-next" onclick="heroSlide(1)" aria-label="Next">&#8250;</button>
+
+              <!-- Dot indicators -->
+              <div class="slide-dots" id="slideDots"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><span class="stat-num">6+</span><span class="stat-label">Films</span></div>
+        <div class="stat-item"><span class="stat-num">1</span><span class="stat-label">Awards</span></div>
+        <div class="stat-item"><span class="stat-num">1</span><span class="stat-label">Languages</span></div>
+        <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Years Active</span></div>
+      </div>
+    </section>
+
+    <section id="films">
+      <div class="section-header">
+        <span class="section-eyebrow">Selected Works</span>
+        <h2 class="section-title">The <em>Filmography</em></h2>
+        <p style="font-size:.72rem;letter-spacing:.15em;color:rgba(201,149,42,.5);margin-top:.8rem;">✦ Click any film
+          card to explore</p>
+      </div>
+      <div class="films-grid">
+        <div class="film-card" onclick="showFilm('kattu-puli')">
+          <div class="film-card-bg film-bg-1"><img src="img/Parking_(2023_film).jpg" alt=""></div>
+          <div class="film-card-overlay"></div>
+          <div class="film-click-hint">→</div>
+          <div class="film-info">
+            <div class="film-year">2023 · Tamil</div>
+            <div class="film-title">Parking</div>
+            <div class="film-role">Income tax officer — Lead Role</div>
+            <!-- <div class="film-award">⬡ National Award Nominee</div> -->
+          </div>
+        </div>
+        <div class="film-card" onclick="showFilm('nila-mazhai')">
+          <div class="film-card-bg film-bg-2"><img src="img/images.jpg" alt=""></div>
+          <div class="film-card-overlay"></div>
+          <div class="film-click-hint">→</div>
+          <div class="film-info">
+            <div class="film-year">2024 · Tamil</div>
+            <div class="film-title">Siren</div>
+            <div class="film-role">Police — Lead Role</div>
+            <!-- <div class="film-award">⬡ Filmfare South Winner</div> -->
+          </div>
+        </div>
+        <div class="film-card" onclick="showFilm('velli-vizhi')">
+          <div class="film-card-bg film-bg-3"><img src="img/images (1).jpg" alt=""></div>
+          <div class="film-card-overlay"></div>
+          <div class="film-click-hint">→</div>
+          <div class="film-info">
+            <div class="film-year">2025 · Tamil</div>
+            <div class="film-title">Tourist Family</div>
+            <div class="film-role">neighbors - Supporting Lead Role</div>
+          </div>
+        </div>
+        <div class="film-card" onclick="showFilm('surya-naga')">
+          <div class="film-card-bg film-bg-4"><img src="img/images (2).jpg" alt=""></div>
+          <div class="film-card-overlay"></div>
+          <div class="film-click-hint">→</div>
+          <div class="film-info">
+            <div class="film-year">2026 · Tamil</div>
+            <div class="film-title">Vaa Vaathiyaar</div>
+            <div class="film-role">Police — Supporting Lead Role</div>
+            <!-- <div class="film-award">⬡ SIIMA Best Actor</div> -->
+          </div>
+        </div>
+        <div class="film-card" onclick="showFilm('iravil-mazhai')">
+          <div class="film-card-bg film-bg-5"><img src="img/Lenin.jpg" alt=""></div>
+          <div class="film-card-overlay"></div>
+          <div class="film-click-hint">→</div>
+          <div class="film-info">
+            <div class="film-year">2026 · Tamil</div>
+            <div class="film-title">Lenin Pandiyan</div>
+            <div class="film-role">Supporting Lead Role</div>
+            <div class="film-award">Upcoming</div>
+          </div>
+        </div>
+        <div class="film-card" onclick="showFilm('manna-pura')">
+          <div class="film-card-bg film-bg-6"><img src="img/Sardar_2_Poster.jpg" alt=""></div>
+          <div class="film-card-overlay"></div>
+          <div class="film-click-hint">→</div>
+          <div class="film-info">
+            <div class="film-year">2026 · Tamil</div>
+            <div class="film-title">Sardar 2</div>
+            <div class="film-role">Police — Supporting Lead Role</div>
+            <div class="film-award">Upcoming</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards">
+      <div class="section-header"><span class="section-eyebrow">Recognition</span>
+        <h2 class="section-title">Awards & <em>Honours</em></h2>
+      </div>
+      <!-- <div class="awards-marquee-wrap">
+        <div class="awards-marquee">
+          <span class="marquee-item">Filmfare South<span class="marquee-dot"></span></span>
+          <span class="marquee-item">SIIMA Awards<span class="marquee-dot"></span></span>
+          <span class="marquee-item">National Film Award<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Tamil Nadu State Award<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Vijay Awards<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Edison Awards<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Kerala State Award<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Zee Cine Awards<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Filmfare South<span class="marquee-dot"></span></span>
+          <span class="marquee-item">SIIMA Awards<span class="marquee-dot"></span></span>
+          <span class="marquee-item">National Film Award<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Tamil Nadu State Award<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Vijay Awards<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Edison Awards<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Kerala State Award<span class="marquee-dot"></span></span>
+          <span class="marquee-item">Zee Cine Awards<span class="marquee-dot"></span></span>
+        </div>
+      </div> -->
+      <div class="award-single-wrap">
+        <div class="award-card-new">
+          <img src="img/Awards.jpeg" alt="Filmfare Award">
+          <div class="award-content">
+            <span class="award-year-label">2022</span>
+            <h3 class="award-title">தமிழ் சிறுகதையின் சாதனை நாயகர்</h3>
+            <!-- <p class="award-film-name">Nila Mazhai (Telugu)</p> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about-inner">
+        <div class="about-quote">"I don't play characters — I become them. Every role is a different life lived."<cite>—
+            Arun Venkatesh</cite></div>
+        <div class="about-body">
+          <p>Born in Theni and raised in the vibrant city of Chennai, Arun Venkatesh began his acting journey in 2023 
+            with a strong passion for cinema and performance. From the very beginning, he has shown dedication to 
+            developing his craft and building a presence in the Tamil film industry. With a keen interest in portraying diverse 
+            roles, Arun focuses on delivering natural and impactful performances on screen. His journey reflects determination, continuous learning, and a commitment to growing as a versatile actor..</p>
+            <p>Height:  177 cm (5.9")  Weight: 75 kgs</p>
+          <p>As an emerging talent, he aims to take on challenging roles and create a distinct identity in the industry through hard work and consistent performance.</p>
+          <div class="skills-row">
+            <span class="skill-tag">Action</span><span class="skill-tag">Drama</span><span
+              class="skill-tag">Thriller</span><span class="skill-tag">Period Films</span><span
+              class="skill-tag">Tamil</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-inner">
+        <div class="section-header" style="padding:0 0 0"><span class="section-eyebrow">Get In Touch</span>
+          <h2 class="section-title">Book & <em>Connect</em></h2>
+        </div>
+        <p class="contact-desc">For film projects, brand collaborations, event appearances, and media inquiries, reach
+          out through the channels below.</p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-card-icon">📱</div>
+            <div class="contact-card-label">Management</div>
+            <div class="contact-card-value">+91 99529 93370</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">✉️</div>
+            <div class="contact-card-label">Email</div>
+            <div class="contact-card-value"><a href="/cdn-cgi/l/email-protection#89e8fbfce7ffece7e2e8fdecfae1c9ece4e8e0e5a7eae6e4"><span class="__cf_email__" data-cfemail="3d5c4f48534b5853565c49584e557d58505c5451135e5250">[email&#160;protected]</span></a></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">📍</div>
+            <div class="contact-card-label">Base</div>
+            <div class="contact-card-value">Chennai, Tamil Nadu</div>
+          </div>
+        </div>
+        <a href="/cdn-cgi/l/email-protection#224350574c54474c49435647514a62474f434b4e0c414d4f" class="btn-primary">Send An Inquiry</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-logo">Arun Venkatesh</div>
+      <div class="footer-copy">© 2026 AKTech·All rights reserved</div>
+      <div class="footer-socials"><a href="#">Instagram</a><a href="#">Twitter</a><a href="#">IMDb</a><a
+          href="#">YouTube</a></div>
+    </footer>
+  </div>
+
+  <!-- FILM DETAIL PAGE -->
+  <div id="page-film" class="page"></div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const films = {
+      'kattu-puli': {
+        title: 'Parking',
+        titleEm: ' ',
+        posterImg: 'Img/Parking_(2023_film).jpg',
+        lang: 'Tamil',
+        year: '2023',
+        duration: '2h 7m',
+        director: 'Ramkumar Balakrishna',
+        role: 'Income Tax Officer Role',
+        genre: 'Action · Drama',
+        music: ' Sam C. S.',
+        bgGrad: 'linear-gradient(135deg,#3a1a0a,#5d2507,#1f2530)',
+        bgIcon: ' ',
+        videoUrl: 'vid/Parking.mp4',
+        driveId: '1Gv-TReZO1Vi8JRI9NXEbJ1gQ7E9EX_tp', // <-- Paste your Google Drive File ID here
+        synopsis: 'I played the role of an Income Tax Officer in a brief 5-minute scene. Although it was my debut appearance, I delivered a strong and confident performance that was well appreciated.',
+        body: 'Parking - I made my acting debut in the Tamil film Parking, where I portrayed the role of an Income Tax Officer in a short yet impactful 5-minute scene. Despite the limited screen time, I focused on delivering a natural and convincing performance that added value to the storyline. This opportunity marked the beginning of my journey in the film industry, allowing me to gain on-set experience and understand the nuances of acting in a professional environment. My role required a confident screen presence and precise dialogue delivery, which I executed effectively. Even though it was a small role, it helped me showcase my potential and passion for acting. I am eager to take on more challenging roles and continue growing as a versatile actor.',
+        awards: [' '],
+        cast: [{ name: ' ', role: '' }, { name: ' ', role: ' ' }]
+      },
+      'nila-mazhai': {
+        title: 'Siren',
+        titleEm: '',
+        posterImg: 'Img/images.jpg',
+        lang: 'Tamil',
+        year: '2024',
+        duration: '2h 22m',
+        director: 'Priya Lakshmi',
+        role: 'Police — Lead Role',
+        genre: 'Romance · Drama',
+        music: 'Ilaiyaraaja Jr.',
+        bgGrad: 'linear-gradient(135deg,#0a2a1e,#103a10,#2a0f25)',
+        bgIcon: ' ',
+        videoUrl: 'vid/Siren.mp4',
+        driveId: '11mdXV3kgfvmzu5laiBMhxhFhn7az4F_u', // <-- Paste your Google Drive File ID here
+        synopsis: 'the police thriller tension. Body describes the role preparation (police procedural training), physical demands, and career significance. Also corrected the director name and music composer.',
+        body: 'I played the role of a police officer in the Tamil film Siren, a performance that spans the full duration of the film, running approximately 2 min and 59 sec. As a central character, my role demanded a strong screen presence, emotional intensity, and a commanding personality throughout the story.  Portraying a police officer required me to adopt a disciplined approach, focusing on realistic body language, authoritative dialogue delivery, and physical endurance. The character is deeply rooted in responsibility, justice, and personal sacrifice, which allowed me to explore a wide range of emotions and bring depth to the performance. This role stands as a significant milestone in my acting journey, as it gave me the opportunity to lead a full-length feature film and showcase my versatility as an actor. It reflects my dedication to the craft and my ability to carry a story with consistency and impact from beginning to end.',
+        awards: ['Filmfare South – Best Actor (Winner)'],
+        cast: [{ name: 'Arun Venkatesh', role: 'Aryan' }, { name: 'Divya Nair', role: 'Priya' }]
+      },
+      'velli-vizhi': {
+        title: 'Tourist',
+        titleEm: 'Family',
+        posterImg: 'Img/images (1).jpg',
+        lang: 'Tamil',
+        year: '2025',
+        duration: '2h 45m',
+        director: 'Muthukumar Vel',
+        role: 'Neighbors - Supporting Lead Role',
+        genre: 'Psychological Thriller',
+        music: 'Santhosh Narayanan',
+        bgGrad: 'linear-gradient(135deg,#2a2a0a,#3d3007,#152010)',
+        bgIcon: ' ',
+        videoUrl: 'vid/Tourist Family.mp4',
+        driveId: '1R7u5BYwWxQ-hp8aCaafdc6MZa36yEWjn', // <-- Paste your Google Drive File ID here
+        synopsis: 'written as a warm family journey story. Body highlights the neighbour character emotional range — warmth, humour, sincerity — and the ensemble context.',
+        body: 'I appeared in the film Tourish Family, portraying the role of a neighbour in a full-length feature running approximately 1min and 42 sec. Though supporting in nature, my character plays an important part in shaping the narrative and adding depth to the story’s emotional and situational dynamics. As a neighbour, the role required a natural and relatable performance, reflecting everyday life interactions with authenticity. I focused on subtle expressions, timing, and realistic dialogue delivery to ensure the character felt genuine and connected to the audience. Being part of a complete feature film allowed me to gain valuable on-screen experience and strengthen my ability to contribute meaningfully to ensemble storytelling. This role highlights my adaptability and commitment to delivering impactful performances, regardless of screen time or character scale.',
+        awards: ['Tamil Nadu State Award – Best Supporting Actor'],
+        cast: [{ name: 'Arun Venkatesh', role: 'Raja' }]
+      },
+      'surya-naga': {
+        title: 'Vaa',
+        titleEm: 'Vaathiyaar',
+        posterImg: 'Img/images (2).jpg',
+        lang: 'Tamil',
+        year: '2026',
+        duration: '2h 30m',
+        director: 'Ravi Shankar',
+        role: 'Police — Supporting Lead Role',
+        genre: 'Action · Mythology',
+        music: 'B. Ajaneesh Loknath',
+        bgGrad: 'linear-gradient(135deg,#0f0a2a,#1a0d3d,#0a1520)',
+        bgIcon: ' ',
+        videoUrl: 'vid/Vaa Vathiyaar.mp4',
+        driveId: '1qdGirzmJqL8j6MqT0od2r6l9Fy3jESe4', // <-- Paste your Google Drive File ID here
+        synopsis: 'he teacher-vs-system conflict. Body positions the police officer role at the intersection of conscience and duty, with mention of uniform preparation.',
+        body: 'I appeared in the film Vaa Vaathiyaar, taking on the role of a police officer in a brief 3–4 second scene. Despite the short screen time, I focused on delivering a sharp and authentic presence that aligned with the intensity of the moment. Portraying a police character, even in a quick appearance, required attention to detail in posture, expression, and uniform presence to ensure realism. This experience helped me understand the importance of making a strong impression, no matter how small the role. Every opportunity on screen is a step forward in my acting journey, and this role reflects my dedication to learning, improving, and making the most out of every performance.',
+        awards: ['SIIMA – Best Actor Kannada (Winner)'],
+        cast: [{ name: ' ', role: ' ' }]
+      },
+      'iravil-mazhai': {
+        title: 'Lenin',
+        titleEm: 'Pandiyan',
+        posterImg: 'Img/Lenin.jpg',
+        lang: 'Tamil',
+        year: '2026',
+        duration: '2h 15m',
+        director: 'Bharathi Raja Jr.',
+        role: 'Supporting Lead Role',
+        genre: 'Romantic Thriller',
+        music: 'Anirudh Ravichander',
+        bgGrad: 'linear-gradient(135deg,#2a1a0a,#3d2507,#200a15)',
+        bgIcon: ' ',
+        videoUrl: 'vid/Lenin.mp4',
+        driveId: '1xPqaiBBLyP8psIIavcYQherq5ljH2QPX', // <-- Paste your Google Drive File ID here
+        synopsis: ' the political-romantic drama tone. Body portrays the supporting lead as a loyal confidant with fierce conviction and vulnerability.',
+        body: 'I am part of the upcoming film Lenin Pandiayan, where I play a supporting (side actor) role. My character contributes to the overall narrative, supporting key moments and adding depth to the storyline. This role required a natural and adaptable performance, allowing me to blend seamlessly with the main cast while maintaining a strong on-screen presence. I focused on delivering realistic expressions, effective timing, and consistent character portrayal. Being involved in this project has provided me with valuable experience in understanding professional filmmaking environments and collaborative storytelling. I look forward to the film’s release and to sharing my performance with the audience.',
+        awards: ['Vijay Award – Best Hero (Winner)'],
+        cast: [{ name: ' ', role: ' ' }]
+      },
+      'manna-pura': {
+        title: 'Sardar',
+        titleEm: '2',
+        lang: 'Tamil',
+        posterImg: 'Img/Sardar_2_Poster.jpg',
+        year: '2026',
+        duration: '2h 20m',
+        director: 'Lal Jose',
+        role: 'Police — Supporting Lead Role',
+        genre: 'Drama · Social',
+        music: 'M. Jayachandran',
+        bgGrad: 'linear-gradient(135deg,#0a1a0a,#152d15,#0a1a1a)',
+        bgIcon: ' ',
+        videoUrl: 'vid/Sardar.mp4',
+        driveId: '1LpsUl5k8XsW5ambup827AMgUEvtoCExx', // <-- Paste your Google Drive File ID here
+        synopsis: ' the legendary spy-action tone of the franchise. Body describes combat choreography training and the significance of joining this high-profile sequel.',
+        body: 'I am part of the film Sardar 2, where I portray the role of a police officer in a supporting capacity. My character contributes to key moments in the narrative, adding intensity and realism to the storyline. Playing a police role required a disciplined approach, with attention to body language, authority, and on-screen presence. I focused on delivering a natural and convincing performance that aligns with the tone of the film. Being involved in this project has further enhanced my experience in working within a professional film environment and strengthened my ability to perform alongside an ensemble cast. This role reflects my continued growth and dedication as an actor.',
+        awards: ['Kerala State Film Award – Best Supporting Actor'],
+        cast: [{ name: ' ', role: ' ' }]
+      }
+    };
+
+    function showFilm(id) {
+      const f = films[id]; if (!f) return;
+      const page = document.getElementById('page-film');
+      page.innerHTML = `
+    <div id="film-detail">
+      <div class="detail-hero">
+        <div class="detail-hero-bg">
+          <div class="detail-hero-bg-inner" style="background:${f.bgGrad}">
+            <svg width="100%" height="100%" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+              <defs><radialGradient id="dg" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#C9952A" stop-opacity="0.2"/><stop offset="100%" stop-color="#C9952A" stop-opacity="0"/></radialGradient></defs>
+              <rect width="1200" height="700" fill="url(#dg)"/>
+              <text x="600" y="390" dominant-baseline="middle" text-anchor="middle" font-size="280" opacity="0.08" fill="#C9952A">${f.bgIcon}</text>
+              ${Array.from({ length: 20 }, (_, i) => `<rect x="${i * 64}" y="0" width="48" height="18" rx="3" fill="#C9952A" opacity="0.04"/>`).join('')}
+              ${Array.from({ length: 20 }, (_, i) => `<rect x="${i * 64}" y="682" width="48" height="18" rx="3" fill="#C9952A" opacity="0.04"/>`).join('')}
+              <line x1="0" y1="18" x2="1200" y2="18" stroke="#C9952A" stroke-width="0.5" opacity="0.08"/>
+              <line x1="0" y1="682" x2="1200" y2="682" stroke="#C9952A" stroke-width="0.5" opacity="0.08"/>
+            </svg>
+          </div>
+        </div>
+        <div class="detail-back-btn" onclick="showHome()">← Back to Portfolio</div>
+        <div class="detail-hero-content">
+          <div class="detail-lang-badge">${f.lang} · ${f.year}</div>
+          <h1 class="detail-title">${f.title} <em>${f.titleEm}</em></h1>
+          <div class="detail-meta-row">
+            <span class="detail-meta-item">🎬 ${f.director}</span>
+            <span class="detail-meta-dot"></span>
+            <span class="detail-meta-item">⏱ ${f.duration}</span>
+            <span class="detail-meta-dot"></span>
+            <span class="detail-meta-item">🎭 ${f.genre}</span>
+            <span class="detail-meta-dot"></span>
+            <span class="detail-meta-item">🎵 ${f.music}</span>
+          </div>
+        </div>
+      </div>
+      <div class="detail-trailer-strip">
+        <div class="trailer-wrapper">
+            <div class="detail-synopsis-label">Watch Trailer</div>
+            <div class="video-container">
+                <iframe
+                  src="https://drive.google.com/file/d/${f.driveId}/preview"
+                  title="${f.title} Trailer"
+                  frameborder="0"
+                  allow="autoplay"
+                  allowfullscreen
+                  style="width: 100%; height: 100%; display: block; border: none;">
+                </iframe>
+            </div>
+        </div>
+      </div>
+      <div class="detail-body">
+        <div class="detail-main">
+          <div class="detail-synopsis-label">Synopsis</div>
+          <div class="detail-synopsis">${f.synopsis}</div>
+          <div class="detail-synopsis-body">${f.body}</div>
+          <div class="detail-cast-label">Cast & Crew</div>
+          <div class="detail-cast-list">${f.cast.map(c => `<div class="detail-cast-item"><span class="cast-name">${c.name}</span><span class="cast-role">${c.role}</span></div>`).join('')}</div>
+        </div>
+        <div class="detail-sidebar">
+          <div class="sidebar-poster">
+            <div class="sidebar-poster-inner" style="background:${f.bgGrad}">
+                  <img src="${f.posterImg}" alt="${f.title}" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:relative;z-index:1;">
+                  </div>
+          </div>
+          <div class="sidebar-info-item"><div class="sidebar-info-label">Role</div><div class="sidebar-info-value">${f.role}</div></div>
+          <div class="sidebar-info-item"><div class="sidebar-info-label">Language</div><div class="sidebar-info-value">${f.lang}</div></div>
+          <div class="sidebar-info-item"><div class="sidebar-info-label">Release Year</div><div class="sidebar-info-value">${f.year}</div></div>
+          <div class="sidebar-info-item"><div class="sidebar-info-label">Director</div><div class="sidebar-info-value">${f.director}</div></div>
+          <div class="sidebar-info-item"><div class="sidebar-info-label">Music</div><div class="sidebar-info-value">${f.music}</div></div>
+          <div class="sidebar-info-item"><div class="sidebar-info-label">Duration</div><div class="sidebar-info-value">${f.duration}</div></div>
+          <div class="detail-awards-section">
+            <div class="sidebar-info-label" style="margin-bottom:.8rem;">Awards</div>
+            ${f.awards.map(a => `<div class="detail-award-chip">⬡ ${a}</div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>`;
+      document.getElementById('page-home').classList.remove('active');
+      page.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // function showFilm(id) {
+    //   const f = films[id]; if (!f) return;
+    //   const page = document.getElementById('page-film');
+    //   page.innerHTML = `
+    //     <div id="film-detail">
+    //       <div class="detail-hero">
+    //         <div class="detail-hero-bg">
+    //           <div class="detail-hero-bg-inner" style="background:${f.bgGrad}; background-image: url('${f.bgIcon}'); background-size: cover; background-position: center;">
+    //             <!-- Background overlay -->
+    //             <div style="position:absolute; inset:0; background: rgba(0,0,0,0.5);"></div>
+    //           </div>
+    //         </div>
+    //         <div class="detail-back-btn" onclick="showHome()">← Back to Portfolio</div>
+    //         <div class="detail-hero-content">
+    //           <div class="detail-lang-badge">${f.lang} · ${f.year}</div>
+    //           <h1 class="detail-title">${f.title} <em>${f.titleEm}</em></h1>
+    //           <div class="detail-meta-row">
+    //             <span class="detail-meta-item">🎬 ${f.director}</span>
+    //             <span class="detail-meta-dot"></span>
+    //             <span class="detail-meta-item">⏱ ${f.duration}</span>
+    //             <span class="detail-meta-dot"></span>
+    //             <span class="detail-meta-item">🎭 ${f.genre}</span>
+    //             <span class="detail-meta-dot"></span>
+    //             <span class="detail-meta-item">🎵 ${f.music}</span>
+    //           </div>
+    //         </div>
+    //       </div>
+
+    //       <!-- Video Trailer Section -->
+    //       <div style="max-width: 1100px; margin: 40px auto; padding: 0 5rem;">
+    //           <div class="detail-synopsis-label">Watch Trailer</div>
+    //           <div class="video-container" style="border-radius: 15px; overflow: hidden; border: 1px solid var(--gold);">
+    //             <video controls style="width: 100%; display: block;" poster="${f.bgIcon}">
+    //                 <source src="${f.videoUrl}" type="video/mp4">
+    //                 Your browser does not support the video tag.
+    //             </video>
+    //           </div>
+    //       </div>
+
+    //       <div class="detail-body">
+    //         <div class="detail-main">
+    //           <div class="detail-synopsis-label">Synopsis</div>
+    //           <div class="detail-synopsis">${f.synopsis}</div>
+    //           <div class="detail-synopsis-body">${f.body}</div>
+    //           <div class="detail-cast-label">Cast & Crew</div>
+    //           <div class="detail-cast-list">${f.cast.map(c => `<div class="detail-cast-item"><span class="cast-name">${c.name}</span><span class="cast-role">${c.role}</span></div>`).join('')}</div>
+    //         </div>
+    //         <div class="detail-sidebar">
+    //           <div class="sidebar-poster">
+    //             <div class="sidebar-poster-inner" style="background-image: url('${f.bgIcon}'); background-size: cover; background-position: center;">
+    //                 <!-- Decorative lines as per your original design -->
+    //                 <div style="position: absolute; inset: 0; border: 1px solid rgba(201, 149, 42, 0.3); margin: 10px;"></div>
+    //             </div>
+    //           </div>
+    //           <div class="sidebar-info-item"><div class="sidebar-info-label">Role</div><div class="sidebar-info-value">${f.role}</div></div>
+    //           <div class="sidebar-info-item"><div class="sidebar-info-label">Language</div><div class="sidebar-info-value">${f.lang}</div></div>
+    //           <div class="sidebar-info-item"><div class="sidebar-info-label">Release Year</div><div class="sidebar-info-value">${f.year}</div></div>
+    //           <div class="sidebar-info-item"><div class="sidebar-info-label">Director</div><div class="sidebar-info-value">${f.director}</div></div>
+    //           <div class="sidebar-info-item"><div class="sidebar-info-label">Music</div><div class="sidebar-info-value">${f.music}</div></div>
+    //           <div class="sidebar-info-item"><div class="sidebar-info-label">Duration</div><div class="sidebar-info-value">${f.duration}</div></div>
+    //           <div class="detail-awards-section">
+    //             <div class="sidebar-info-label" style="margin-bottom:.8rem;">Awards</div>
+    //             ${f.awards.map(a => `<div class="detail-award-chip">⬡ ${a}</div>`).join('')}
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>`;
+    //   document.getElementById('page-home').classList.remove('active');
+    //   page.classList.add('active');
+    //   window.scrollTo({ top: 0, behavior: 'smooth' });
+    // }
+    function showHome() {
+      document.getElementById('page-film').classList.remove('active');
+      document.getElementById('page-home').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    
+
+    /* ─── HAMBURGER TOGGLE ─── */
+    function toggleMenu() {
+      const hamburger = document.getElementById('hamburger');
+      const navMobile  = document.getElementById('navMobile');
+      const isOpen     = hamburger.classList.contains('open');
+
+      if (isOpen) {
+        // Close
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        navMobile.classList.remove('open');
+        document.body.style.overflow = '';
+      } else {
+        // Open
+        hamburger.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        navMobile.classList.add('open');
+        document.body.style.overflow = 'hidden'; // prevent background scroll
+      }
+    }
+
+    /* Fully close the mobile menu */
+    function closeMenu() {
+      const hamburger = document.getElementById('hamburger');
+      const navMobile  = document.getElementById('navMobile');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      navMobile.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* Close menu then scroll to section on home page */
+    function navTo(sectionId) {
+      closeMenu();
+      // If we're on the film detail page, go home first then scroll
+      if (document.getElementById('page-film').classList.contains('active')) {
+        showHome();
+        setTimeout(() => {
+          const el = document.getElementById(sectionId);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+      } else {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+     /* ── HERO SLIDESHOW JS ── */
+    (function () {
+      const slides = document.querySelectorAll('.hero-slide');
+      const dotsWrap = document.getElementById('slideDots');
+      let current = 0;
+      let timer;
+
+      // Build dots
+      slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'slide-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Photo ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+      });
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        dotsWrap.children[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dotsWrap.children[current].classList.add('active');
+        resetTimer();
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 4000);
+      }
+
+      // expose for arrow buttons
+      window.heroSlide = (dir) => goTo(current + dir);
+
+      resetTimer();
+    })();
+
+  </script>
+</body>
+</html>
